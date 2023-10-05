@@ -9,3 +9,7 @@ tasks:
         desc: Builds the project documentation.
         cmd: dart doc -o docs
         
+    format:
+        desc: Runs the code formatter on soruce and test files.
+        cmd: dart format lib test
+        

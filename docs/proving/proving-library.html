@@ -63,7 +63,7 @@
     
 <section class="desc markdown">
   <p>A collection of unit testing tools to help "prove" that your code
-works.</p>
+works - the whole enchilada.</p>
 <p>This library is somewhat opinionated, expecting the use of the standard
 <code>test</code> library and matchers.</p>
 <p>It provides functions to verify results, parametize tests, and work
@@ -81,9 +81,8 @@ that seems to be missing from the available libraries.</p>
 
 </dt>
 <dd>
-  An abstract base class for test fixtures that can be registered
-with the testing lifecycle using the <code>applyFixture(Fixture)</code>
-function.
+  Defines an abstract Fixture which will setup (<code>before</code>) and teardown (<code>after</code>)
+required "fixtures" for testing.
 </dd>
 
         <dt id="TempDirFixture">
@@ -106,20 +105,6 @@ setup, and deleted on teardown.
       <h2>Functions</h2>
 
       <dl class="callables">
-        <dt id="applyFixture" class="callable">
-  <span class="name"><a href="../fixtures/applyFixture.html">applyFixture</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../fixtures/Fixture-class.html">Fixture</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="applyFixture-param-fixture"><span class="type-annotation">T</span> <span class="parameter-name">fixture</span></span>)
-    <span class="returntype parameter">&#8594; T</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Registers the provided <code>Fixture</code> with the test lifecycle hooks for the
-current group.
-  
-
-</dd>
-
         <dt id="copyResourceInto" class="callable">
   <span class="name"><a href="../resources/copyResourceInto.html">copyResourceInto</a></span><span class="signature">(<wbr><span class="parameter" id="copyResourceInto-param-path"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, </span><span class="parameter" id="copyResourceInto-param-dir"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-io/Directory-class.html">Directory</a></span> <span class="parameter-name">dir</span>, </span><span class="parameter" id="copyResourceInto-param-prefix">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefix</span> = <span class="default-value">_defaultPrefix</span>}</span>)
     <span class="returntype parameter">&#8594; void</span>
@@ -144,6 +129,34 @@ a <code>File</code> with the same filename as the original.
 <dd>
   Copies the test resource at the specified <code>path</code> into the provided <code>File</code>,
 creating it if necessary.
+  
+
+</dd>
+
+        <dt id="fixtureForAll" class="callable">
+  <span class="name"><a href="../fixtures/fixtureForAll.html">fixtureForAll</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../fixtures/Fixture-class.html">Fixture</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="fixtureForAll-param-fixture"><span class="type-annotation">T</span> <span class="parameter-name">fixture</span></span>)
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Used to register a <code>Fixture</code> to be executed before the tests are executed in
+a group, and then again after all the group tests have executed.
+  
+
+</dd>
+
+        <dt id="fixtureForEach" class="callable">
+  <span class="name"><a href="../fixtures/fixtureForEach.html">fixtureForEach</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../fixtures/Fixture-class.html">Fixture</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="fixtureForEach-param-fixture"><span class="type-annotation">T</span> <span class="parameter-name">fixture</span></span>)
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Used to register a <code>Fixture</code> to be executed before and after each test method
+in the group.
   
 
 </dd>
@@ -191,7 +204,7 @@ test run.
 </dd>
 
         <dt id="resourceDirectory" class="callable">
-  <span class="name"><a href="../resources/resourceDirectory.html">resourceDirectory</a></span><span class="signature">(<wbr><span class="parameter" id="resourceDirectory-param-path"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, </span><span class="parameter" id="resourceDirectory-param-prefix">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefix</span> = <span class="default-value">_defaultPrefix</span>}</span>)
+  <span class="name"><a href="../resources/resourceDirectory.html">resourceDirectory</a></span><span class="signature">(<wbr><span class="parameter" id="resourceDirectory-param-path">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span> = <span class="default-value">&#39;&#39;</span>, </span><span class="parameter" id="resourceDirectory-param-prefix"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefix</span> = <span class="default-value">_defaultPrefix</span>}</span>)
     <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.1.2/dart-io/Directory-class.html">Directory</a></span>
   </span>
   

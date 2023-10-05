@@ -6,7 +6,8 @@ import 'package:test/test.dart';
 void main() {
   group('Resources', () {
     test('using resourceFile', () {
-      expect(resourceFile('foo.txt').readAsStringSync(), equals('This is foo!'));
+      expect(
+          resourceFile('foo.txt').readAsStringSync(), equals('This is foo!'));
     });
 
     test('using resourceUri', () {
@@ -40,7 +41,7 @@ void main() {
   });
 
   group('Copying Resources', () {
-    final tmpDir = applyFixture(TempDirFixture());
+    final tmpDir = fixtureForEach(TempDirFixture());
 
     test('using copyResourceTo', () {
       final tempFile = File('${tmpDir.directory.path}/other.txt');

@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Fixtures', () {
-    final tmpDir = applyFixture(TempDirFixture());
+    final tmpDir = fixtureForEach(TempDirFixture());
 
     test('verify exists', () => expect(tmpDir.directory.existsSync(), isTrue));
   });

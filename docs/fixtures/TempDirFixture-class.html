@@ -66,7 +66,7 @@
 setup, and deleted on teardown.</p>
 <h1 id="example">Example</h1>
 <pre class="language-dart"><code class="language-dart">group('Some test', (){
-  final tmpDir = applyFixture&lt;TempDirFixture&gt;(TempDirFixture())
+  final tmpDir = fixtureForEach&lt;TempDirFixture&gt;(TempDirFixture())
 
   test('testing something', (){
     // ... use tmpDir.directory here ...
@@ -159,47 +159,8 @@ setup, and deleted on teardown.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
-        <dt id="noSuchMethod" class="callable inherited">
-  <span class="name"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
-    <span class="returntype parameter">&#8594; dynamic</span>
-  </span>
-  
-
-</dt>
-<dd class="inherited">
-  Invoked when a nonexistent method or property is accessed.
-  <div class="features"><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="setUp" class="callable">
-  <span class="name"><a href="../fixtures/TempDirFixture/setUp.html">setUp</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Creates the temporary directory and exposes it as the <code>directory</code> property.
-  <div class="features"><span class="feature">override</span></div>
-
-</dd>
-
-        <dt id="setUpAll" class="callable inherited">
-  <span class="name"><a href="../fixtures/Fixture/setUpAll.html">setUpAll</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd class="inherited">
-  Registers a <code>setUpAll</code> operation to be executed before all tests (in a group).
-  <div class="features"><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="tearDown" class="callable">
-  <span class="name"><a href="../fixtures/TempDirFixture/tearDown.html">tearDown</a></span><span class="signature">(<wbr>)
+        <dt id="after" class="callable">
+  <span class="name"><a href="../fixtures/TempDirFixture/after.html">after</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
@@ -211,15 +172,28 @@ setup, and deleted on teardown.</p>
 
 </dd>
 
-        <dt id="tearDownAll" class="callable inherited">
-  <span class="name"><a href="../fixtures/Fixture/tearDownAll.html">tearDownAll</a></span><span class="signature">(<wbr>)
+        <dt id="before" class="callable">
+  <span class="name"><a href="../fixtures/TempDirFixture/before.html">before</a></span><span class="signature">(<wbr>)
     <span class="returntype parameter">&#8594; void</span>
   </span>
   
 
 </dt>
+<dd>
+  Creates the temporary directory and exposes it as the <code>directory</code> property.
+  <div class="features"><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
 <dd class="inherited">
-  Registers a <code>tearDownAll</code> operation to be executed after all tests (in a group).
+  Invoked when a nonexistent method or property is accessed.
   <div class="features"><span class="feature">inherited</span></div>
 
 </dd>

@@ -67,9 +67,11 @@ Uri resourceUri(String path, {String prefix = _defaultPrefix}) {
 /// ```dart
 /// Directory resourceDir = resourceDirectory('data/dir');
 /// ```
-Directory resourceDirectory({String path = '', String prefix = _defaultPrefix}) {
+Directory resourceDirectory(
+    {String path = '', String prefix = _defaultPrefix}) {
   var dir = Directory.current;
-  while (!dir.listSync().any((entity) => entity.path.endsWith('pubspec.yaml'))) {
+  while (
+      !dir.listSync().any((entity) => entity.path.endsWith('pubspec.yaml'))) {
     dir = dir.parent;
   }
   return Directory('${dir.path}/$prefix$path');

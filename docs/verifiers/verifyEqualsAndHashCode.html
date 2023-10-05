@@ -80,6 +80,9 @@ eqivalent (but not the same instance) are actually equal.</p>
 <li><code>Object instanceA</code> - one distinct instance of the object</li>
 <li><code>Object instanceB</code> - another distinct instance of the object</li>
 </ul>
+<h1 id="example">Example</h1>
+<pre class="language-dart"><code class="language-dart">verifyEqualsAndHashCode('Alpha', 'Alpha');
+</code></pre>
 </section>
 
 
@@ -87,6 +90,8 @@ eqivalent (but not the same instance) are actually equal.</p>
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">void verifyEqualsAndHashCode(Object instanceA, Object instanceB) {
+  expect(instanceA, isNot(same(instanceB)));
+
   expect(instanceA, equals(instanceA));
   expect(instanceB, equals(instanceB));
   expect(instanceA, equals(instanceB));

@@ -76,9 +76,8 @@ test lifecycle.</p>
 
 </dt>
 <dd>
-  An abstract base class for test fixtures that can be registered
-with the testing lifecycle using the <code>applyFixture(Fixture)</code>
-function.
+  Defines an abstract Fixture which will setup (<code>before</code>) and teardown (<code>after</code>)
+required "fixtures" for testing.
 </dd>
 
         <dt id="TempDirFixture">
@@ -101,16 +100,30 @@ setup, and deleted on teardown.
       <h2>Functions</h2>
 
       <dl class="callables">
-        <dt id="applyFixture" class="callable">
-  <span class="name"><a href="../fixtures/applyFixture.html">applyFixture</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../fixtures/Fixture-class.html">Fixture</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="applyFixture-param-fixture"><span class="type-annotation">T</span> <span class="parameter-name">fixture</span></span>)
+        <dt id="fixtureForAll" class="callable">
+  <span class="name"><a href="../fixtures/fixtureForAll.html">fixtureForAll</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../fixtures/Fixture-class.html">Fixture</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="fixtureForAll-param-fixture"><span class="type-annotation">T</span> <span class="parameter-name">fixture</span></span>)
     <span class="returntype parameter">&#8594; T</span>
   </span>
   
 
 </dt>
 <dd>
-  Registers the provided <code>Fixture</code> with the test lifecycle hooks for the
-current group.
+  Used to register a <code>Fixture</code> to be executed before the tests are executed in
+a group, and then again after all the group tests have executed.
+  
+
+</dd>
+
+        <dt id="fixtureForEach" class="callable">
+  <span class="name"><a href="../fixtures/fixtureForEach.html">fixtureForEach</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../fixtures/Fixture-class.html">Fixture</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="fixtureForEach-param-fixture"><span class="type-annotation">T</span> <span class="parameter-name">fixture</span></span>)
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd>
+  Used to register a <code>Fixture</code> to be executed before and after each test method
+in the group.
   
 
 </dd>

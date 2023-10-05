@@ -2,41 +2,49 @@ import 'dart:io';
 
 import 'package:test/test.dart';
 
-/// An abstract base class for test fixtures that can be registered
-/// with the testing lifecycle using the `applyFixture(Fixture)`
-/// function.
+/// Defines an abstract Fixture which will setup (`before`) and teardown (`after`)
+/// required "fixtures" for testing.
 ///
-/// Implementations should override and implement the desired lifecycle
-/// methods.
+/// Use one of the two fixture application functions to apply the fixture to
+/// the test lifecyle:
+/// - `fixtureForEach` to have the fixture registered before and after each test
+/// - `fixtureForAll` to have it registered before and after all tests in a group.
+///
+/// Your implementation should override the before and/or after methods to
+/// perform your desired setup and teardown operations.
 abstract class Fixture {
-  /// Registers a `setUp` operation to be executed before each test (in a group).
-  void setUp() {}
+  /// The lifecycle handler method for setting up the desired fixture data.
+  void before() {}
 
-  /// Registers a `tearDown` operation to be executed after each test (in a group).
-  void tearDown() {}
-
-  /// Registers a `setUpAll` operation to be executed before all tests (in a group).
-  void setUpAll() {}
-
-  /// Registers a `tearDownAll` operation to be executed after all tests (in a group).
-  void tearDownAll() {}
+  /// The lifecycle handler method for tearing down the fixture data.
+  void after() {}
 }
 
-// FIXME: consider pulling out separate mixins for each lifecycle method
-
-/// Registers the provided `Fixture` with the test lifecycle hooks for the
-/// current group.
+/// Used to register a `Fixture` to be executed before and after each test method
+/// in the group.
 ///
 /// # Arguments
-/// - `Fixture fixture` the fixture to be registered.
+/// - `T fixture` - the fixture instance to be registered
 ///
 /// # Returns
-/// The instance of the `Fixture` passed in, for convenience.
-T applyFixture<T extends Fixture>(T fixture) {
-  setUp(fixture.setUp);
-  tearDown(fixture.tearDown);
-  setUpAll(fixture.setUpAll);
-  tearDownAll(fixture.tearDownAll);
+/// The instance of the fixture passed in, for convenience.
+T fixtureForEach<T extends Fixture>(T fixture) {
+  setUp(fixture.before);
+  tearDown(fixture.after);
+  return fixture;
+}
+
+/// Used to register a `Fixture` to be executed before the tests are executed in
+/// a group, and then again after all the group tests have executed.
+///
+/// # Arguments
+/// - `T fixture` - the fixture instance to be registered
+///
+/// # Returns
+/// The instance of the fixture passed in, for convenience.
+T fixtureForAll<T extends Fixture>(T fixture) {
+  setUpAll(fixture.before);
+  tearDownAll(fixture.after);
   return fixture;
 }
 
@@ -46,7 +54,7 @@ T applyFixture<T extends Fixture>(T fixture) {
 /// # Example
 /// ```dart
 /// group('Some test', (){
-///   final tmpDir = applyFixture<TempDirFixture>(TempDirFixture())
+///   final tmpDir = fixtureForEach<TempDirFixture>(TempDirFixture())
 ///
 ///   test('testing something', (){
 ///     // ... use tmpDir.directory here ...
@@ -59,13 +67,13 @@ class TempDirFixture extends Fixture {
 
   /// Creates the temporary directory and exposes it as the `directory` property.
   @override
-  void setUp() {
+  void before() {
     directory = Directory.systemTemp.createTempSync();
   }
 
   /// Cleans out and deletes the temporary directory.
   @override
-  void tearDown() {
+  void after() {
     if (directory.existsSync()) {
       directory.deleteSync(recursive: true);
     }

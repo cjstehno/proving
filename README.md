@@ -20,3 +20,7 @@ To run all unit tests:
 ```sh
 dart test
 ```
+
+## License
+
+Proving is licensed under the [3-Clause BSD License](https://opensource.org/license/bsd-3-clause/).

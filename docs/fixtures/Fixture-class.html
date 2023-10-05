@@ -63,11 +63,16 @@
 
     
 <section class="desc markdown">
-  <p>An abstract base class for test fixtures that can be registered
-with the testing lifecycle using the <code>applyFixture(Fixture)</code>
-function.</p>
-<p>Implementations should override and implement the desired lifecycle
-methods.</p>
+  <p>Defines an abstract Fixture which will setup (<code>before</code>) and teardown (<code>after</code>)
+required "fixtures" for testing.</p>
+<p>Use one of the two fixture application functions to apply the fixture to
+the test lifecyle:</p>
+<ul>
+<li><code>fixtureForEach</code> to have the fixture registered before and after each test</li>
+<li><code>fixtureForAll</code> to have it registered before and after all tests in a group.</li>
+</ul>
+<p>Your implementation should override the before and/or after methods to
+perform your desired setup and teardown operations.</p>
 </section>
 
 
@@ -139,6 +144,32 @@ methods.</p>
       id="instance-methods">
     <h2>Methods</h2>
     <dl class="callables">
+        <dt id="after" class="callable">
+  <span class="name"><a href="../fixtures/Fixture/after.html">after</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  The lifecycle handler method for tearing down the fixture data.
+  
+
+</dd>
+
+        <dt id="before" class="callable">
+  <span class="name"><a href="../fixtures/Fixture/before.html">before</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd>
+  The lifecycle handler method for setting up the desired fixture data.
+  
+
+</dd>
+
         <dt id="noSuchMethod" class="callable inherited">
   <span class="name"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
     <span class="returntype parameter">&#8594; dynamic</span>
@@ -149,58 +180,6 @@ methods.</p>
 <dd class="inherited">
   Invoked when a nonexistent method or property is accessed.
   <div class="features"><span class="feature">inherited</span></div>
-
-</dd>
-
-        <dt id="setUp" class="callable">
-  <span class="name"><a href="../fixtures/Fixture/setUp.html">setUp</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Registers a <code>setUp</code> operation to be executed before each test (in a group).
-  
-
-</dd>
-
-        <dt id="setUpAll" class="callable">
-  <span class="name"><a href="../fixtures/Fixture/setUpAll.html">setUpAll</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Registers a <code>setUpAll</code> operation to be executed before all tests (in a group).
-  
-
-</dd>
-
-        <dt id="tearDown" class="callable">
-  <span class="name"><a href="../fixtures/Fixture/tearDown.html">tearDown</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Registers a <code>tearDown</code> operation to be executed after each test (in a group).
-  
-
-</dd>
-
-        <dt id="tearDownAll" class="callable">
-  <span class="name"><a href="../fixtures/Fixture/tearDownAll.html">tearDownAll</a></span><span class="signature">(<wbr>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Registers a <code>tearDownAll</code> operation to be executed after all tests (in a group).
-  
 
 </dd>
 
