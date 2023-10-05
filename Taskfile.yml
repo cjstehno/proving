@@ -1,0 +1,11 @@
+version: '3'
+
+tasks:
+    test:
+        desc: Runs the tests for the project.
+        cmd: dart test -r expanded
+
+    docs:
+        desc: Builds the project documentation.
+        cmd: dart doc -o docs
+        

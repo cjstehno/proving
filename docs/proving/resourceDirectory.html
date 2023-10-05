@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the copyResourceInto function from the proving library, for the Dart programming language.">
-  <title>copyResourceInto function - proving library - Dart API</title>
+  <meta name="description" content="API docs for the resourceDirectory function from the proving library, for the Dart programming language.">
+  <title>resourceDirectory function - proving library - Dart API</title>
 
 
   
@@ -30,9 +30,9 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">proving</a></li>
     <li><a href="../proving/proving-library.html">proving</a></li>
-    <li class="self-crumb">copyResourceInto function</li>
+    <li class="self-crumb">resourceDirectory function</li>
   </ol>
-  <div class="self-name">copyResourceInto</div>
+  <div class="self-name">resourceDirectory</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -56,17 +56,16 @@
       data-above-sidebar="proving&#47;proving-library-sidebar.html"
       data-below-sidebar="">
       <div>
-<h1><span class="kind-function">copyResourceInto</span> function 
+<h1><span class="kind-function">resourceDirectory</span> function 
  
 </h1></div>
 
     <section class="multi-line-signature">
         
 
-<span class="returntype">void</span>
-<span class="name ">copyResourceInto</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="copyResourceInto-param-path"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, </span></li>
-<li><span class="parameter" id="copyResourceInto-param-dir"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-io/Directory-class.html">Directory</a></span> <span class="parameter-name">dir</span>, </span></li>
-<li><span class="parameter" id="copyResourceInto-param-prefix">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefix</span> = <span class="default-value">_defaultPrefix</span>}</span></li>
+<span class="returntype"><a href="https://api.dart.dev/stable/3.1.2/dart-io/Directory-class.html">Directory</a></span>
+<span class="name ">resourceDirectory</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="resourceDirectory-param-path"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, </span></li>
+<li><span class="parameter" id="resourceDirectory-param-prefix">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefix</span> = <span class="default-value">_defaultPrefix</span>}</span></li>
 </ol>)
 
         
@@ -74,35 +73,33 @@
     </section>
     
 <section class="desc markdown">
-  <p>Copies the test resource at the specified <code>path</code> into the provided <code>Directory</code> as
-a <code>File</code> with the same filename as the original.</p>
+  <p>Retrieves a test resource <code>Directory</code>.</p>
 <p>"Test resources" are files stored (by default) under the <code>test/resources/</code>
 directory of the project root. This prefix may be changed, using the <code>prefix</code>
 argument.</p>
 <h1 id="arguments">Arguments</h1>
 <ul>
 <li><code>String path</code> - the relative path (from the <code>prefix</code> by default).</li>
-<li><code>Directory dir</code> - the directory where the file is to be copied.</li>
 <li><code>String prefix</code> - the path prefix from the project root (defaults to <code>test/resources</code>).</li>
 </ul>
+<h1 id="return">Return</h1>
+<p>A <code>Directory</code> reference to the specified resource.</p>
+<h1 id="example">Example</h1>
+<pre class="language-dart"><code class="language-dart">Directory resourceDir = resourceDirectory('data/dir');
+</code></pre>
 </section>
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void copyResourceInto(String path, Directory dir, {String prefix = _defaultPrefix}) {
-  final sourceFile = resourceFile(path, prefix: prefix);
-
-  if (!sourceFile.existsSync()) {
-    throw Exception(&#39;Resource file ($path) does not exist.&#39;);
+  <pre class="language-dart"><code class="language-dart">Directory resourceDirectory(String path, {String prefix = _defaultPrefix}) {
+  var dir = Directory.current;
+  while (
+      !dir.listSync().any((entity) =&gt; entity.path.endsWith(&#39;pubspec.yaml&#39;))) {
+    dir = dir.parent;
   }
-
-  if (!dir.existsSync()) {
-    dir.createSync(recursive: true);
-  }
-
-  sourceFile.copySync(&#39;${dir.path}&#47;${sourceFile.uri.pathSegments.last}&#39;);
+  return Directory(&#39;${dir.path}&#47;$prefix$path&#39;);
 }</code></pre>
 </section>
 
@@ -120,7 +117,7 @@ argument.</p>
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../index.html">proving</a></li>
     <li><a href="../proving/proving-library.html">proving</a></li>
-    <li class="self-crumb">copyResourceInto function</li>
+    <li class="self-crumb">resourceDirectory function</li>
 </ol>
 
 
