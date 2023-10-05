@@ -67,10 +67,9 @@ Uri resourceUri(String path, {String prefix = _defaultPrefix}) {
 /// ```dart
 /// Directory resourceDir = resourceDirectory('data/dir');
 /// ```
-Directory resourceDirectory(String path, {String prefix = _defaultPrefix}) {
+Directory resourceDirectory({String path = '', String prefix = _defaultPrefix}) {
   var dir = Directory.current;
-  while (
-      !dir.listSync().any((entity) => entity.path.endsWith('pubspec.yaml'))) {
+  while (!dir.listSync().any((entity) => entity.path.endsWith('pubspec.yaml'))) {
     dir = dir.parent;
   }
   return Directory('${dir.path}/$prefix$path');
@@ -184,8 +183,11 @@ void copyResourceTo(String path, File file, {String prefix = _defaultPrefix}) {
 /// - `String path` - the relative path (from the `prefix` by default).
 /// - `Directory dir` - the directory where the file is to be copied.
 /// - `String prefix` - the path prefix from the project root (defaults to `test/resources`).
-void copyResourceInto(String path, Directory dir,
-    {String prefix = _defaultPrefix,}) {
+void copyResourceInto(
+  String path,
+  Directory dir, {
+  String prefix = _defaultPrefix,
+}) {
   final sourceFile = resourceFile(path, prefix: prefix);
 
   if (!sourceFile.existsSync()) {

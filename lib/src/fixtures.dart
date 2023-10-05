@@ -22,6 +22,8 @@ abstract class Fixture {
   void tearDownAll() {}
 }
 
+// FIXME: consider pulling out separate mixins for each lifecycle method
+
 /// Registers the provided `Fixture` with the test lifecycle hooks for the
 /// current group.
 ///
