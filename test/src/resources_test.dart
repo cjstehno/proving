@@ -28,6 +28,7 @@ void main() {
 
     test('using resourceString', () {
       expect(resourceString('foo.txt'), equals('This is foo!'));
+      expect(resourceString('subdir/bar.txt'), equals('I am bar!'));
     });
 
     test('using templateResource', () {
@@ -49,16 +50,39 @@ void main() {
       final tempFile = File('${tmpDir.directory.path}/other.txt');
       copyResourceTo('foo.txt', tempFile);
 
-      expect(tempFile.existsSync(), isTrue);
-      expect(tempFile.readAsStringSync(), equals('This is foo!'));
+      _expectFileWith(tempFile, 'This is foo!');
     });
 
     test('using copyResourceInto', () {
       copyResourceInto('foo.txt', tmpDir.directory);
 
-      final file = File('${tmpDir.directory.path}/foo.txt');
-      expect(file.existsSync(), isTrue);
-      expect(file.readAsStringSync(), equals('This is foo!'));
+      _expectFileWith(File('${tmpDir.directory.path}/foo.txt'), 'This is foo!');
+    });
+
+    test('copy of nonexisting resource', () {
+      final tempFile = File('${tmpDir.directory.path}/other.txt');
+      expect(() => copyResourceTo('nothere.txt', tempFile), throwsException);
+    });
+
+    test('copy-into with nonexisting resource', () {
+      expect(
+        () => copyResourceInto('nothere.txt', tmpDir.directory),
+        throwsException,
+      );
+    });
+
+    test('using copyResourceInto with new dir', () {
+      copyResourceInto('foo.txt', Directory('${tmpDir.directory.path}/other'));
+
+      _expectFileWith(
+        File('${tmpDir.directory.path}/other/foo.txt'),
+        'This is foo!',
+      );
     });
   });
+}
+
+void _expectFileWith(File file, String text) {
+  expect(file.existsSync(), isTrue);
+  expect(file.readAsStringSync(), equals(text));
 }

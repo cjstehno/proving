@@ -14,10 +14,10 @@ import 'package:test/test.dart';
 /// perform your desired setup and teardown operations.
 abstract class Fixture {
   /// The lifecycle handler method for setting up the desired fixture data.
-  void before() {}
+  void before();
 
   /// The lifecycle handler method for tearing down the fixture data.
-  void after() {}
+  void after();
 }
 
 /// Used to register a `Fixture` to be executed before and after each test

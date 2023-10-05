@@ -93,13 +93,8 @@ directory of the project root. This prefix may be changed, using the
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">File resourceFile(String path, {String prefix = _defaultPrefix}) {
-  var dir = Directory.current;
-  while (!dir.listSync().any((entity) =&gt; entity.path.endsWith(_projectFile))) {
-    dir = dir.parent;
-  }
-  return File(&#39;${dir.path}&#47;$prefix$path&#39;);
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">File resourceFile(String path, {String prefix = _defaultPrefix}) =&gt;
+    File(&#39;${_resourceRoot(prefix)}$path&#39;);</code></pre>
 </section>
 
 

@@ -60,10 +60,27 @@ installed on your machine.</p>
 <p>Install via <code>dart pub add</code>:</p>
 <pre class="language-sh"><code class="language-sh">dart pub add proving
 </code></pre>
+<blockquote>
+<p><strong>Taskfile.</strong> This project uses <a href="https://taskfile.dev">Taskfile</a> to simplify development tasks.
+It is not a requirement, but recommended.</p>
+</blockquote>
 <h2 id="running-tests-">Running Tests 🧪</h2>
 <p>To run all unit tests:</p>
 <pre class="language-sh"><code class="language-sh">dart test
 </code></pre>
+<h3 id="coverage">Coverage</h3>
+<p>In order to do anything useful with the test coverage, you must have <code>lcov</code> installed. You can
+install it using one of the following:</p>
+<pre class="language-sh"><code class="language-sh">sudo apt install lcov
+brew install lcov
+sudo yum install lcov
+</code></pre>
+<p>Once you have <code>lcov</code> installed, you can run the tests with coverage as follows:</p>
+<pre class="language-sh"><code class="language-sh">dart pub global run coverage:test_with_coverage
+dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info
+genhtml coverage/lcov.info -o coverage/
+</code></pre>
+<p>The you can open the <code>coverage/index.html</code> file to review the coverage report.</p>
 <h2 id="license">License</h2>
 <p>Proving is licensed under the <a href="https://opensource.org/license/bsd-3-clause/">3-Clause BSD License</a>.</p>
 </section>

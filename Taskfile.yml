@@ -3,7 +3,15 @@ version: '3'
 tasks:
     test:
         desc: Runs the tests for the project.
-        cmd: dart test -r expanded
+        cmd: dart test
+
+    coverage:
+        desc: Runs the tests with coverage.
+        cmds:
+            - dart pub global run coverage:test_with_coverage
+            - dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info
+            - genhtml coverage/lcov.info -o coverage/
+            - open coverage/index.html
 
     docs:
         desc: Builds the project documentation.

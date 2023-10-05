@@ -97,13 +97,8 @@ string will provide the prefixed root directory.</li>
   <pre class="language-dart"><code class="language-dart">Directory resourceDirectory({
   String path = &#39;&#39;,
   String prefix = _defaultPrefix,
-}) {
-  var dir = Directory.current;
-  while (!dir.listSync().any((entity) =&gt; entity.path.endsWith(_projectFile))) {
-    dir = dir.parent;
-  }
-  return Directory(&#39;${dir.path}&#47;$prefix$path&#39;);
-}</code></pre>
+}) =&gt;
+    Directory(&#39;${_resourceRoot(prefix)}$path&#39;);</code></pre>
 </section>
 
 

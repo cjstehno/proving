@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:typed_data';
 
 const _defaultPrefix = 'test/resources/';
-const _projectFile = 'pubspec.yaml';
 
 /// Retrieves a test resource, as a `File`.
 ///
@@ -21,13 +20,8 @@ const _projectFile = 'pubspec.yaml';
 /// ```dart
 /// File textFile = resourceFile('data/test.txt');
 /// ```
-File resourceFile(String path, {String prefix = _defaultPrefix}) {
-  var dir = Directory.current;
-  while (!dir.listSync().any((entity) => entity.path.endsWith(_projectFile))) {
-    dir = dir.parent;
-  }
-  return File('${dir.path}/$prefix$path');
-}
+File resourceFile(String path, {String prefix = _defaultPrefix}) =>
+    File('${_resourceRoot(prefix)}$path');
 
 /// Retrieves a test resource, as a `Uri`.
 ///
@@ -71,13 +65,8 @@ Uri resourceUri(String path, {String prefix = _defaultPrefix}) {
 Directory resourceDirectory({
   String path = '',
   String prefix = _defaultPrefix,
-}) {
-  var dir = Directory.current;
-  while (!dir.listSync().any((entity) => entity.path.endsWith(_projectFile))) {
-    dir = dir.parent;
-  }
-  return Directory('${dir.path}/$prefix$path');
-}
+}) =>
+    Directory('${_resourceRoot(prefix)}$path');
 
 /// Retrieves a test resource, as a `String` of the file contents.
 ///
@@ -205,3 +194,6 @@ void copyResourceInto(
 
   sourceFile.copySync('${dir.path}/${sourceFile.uri.pathSegments.last}');
 }
+
+// We're going to assume you are running tests from the project root.
+String _resourceRoot(String prefix) => '${Directory.current.path}/$prefix';
