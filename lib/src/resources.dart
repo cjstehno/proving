@@ -7,8 +7,8 @@ const _projectFile = 'pubspec.yaml';
 /// Retrieves a test resource, as a `File`.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
 /// - `String path` - the relative path (from the `prefix` by default).
@@ -32,8 +32,8 @@ File resourceFile(String path, {String prefix = _defaultPrefix}) {
 /// Retrieves a test resource, as a `Uri`.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
 /// - `String path` - the relative path (from the `prefix` by default).
@@ -53,11 +53,12 @@ Uri resourceUri(String path, {String prefix = _defaultPrefix}) {
 /// Retrieves a test resource `Directory`.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
-/// - `String path` - the relative path (from the `prefix` by default).
+/// - `String path` - the relative path (from the `prefix` by default). An empty
+/// string will provide the prefixed root directory.
 /// - `String prefix` - the path prefix from the project root (defaults to `test/resources`).
 ///
 /// # Return
@@ -67,11 +68,12 @@ Uri resourceUri(String path, {String prefix = _defaultPrefix}) {
 /// ```dart
 /// Directory resourceDir = resourceDirectory('data/dir');
 /// ```
-Directory resourceDirectory(
-    {String path = '', String prefix = _defaultPrefix}) {
+Directory resourceDirectory({
+  String path = '',
+  String prefix = _defaultPrefix,
+}) {
   var dir = Directory.current;
-  while (
-      !dir.listSync().any((entity) => entity.path.endsWith('pubspec.yaml'))) {
+  while (!dir.listSync().any((entity) => entity.path.endsWith(_projectFile))) {
     dir = dir.parent;
   }
   return Directory('${dir.path}/$prefix$path');
@@ -80,8 +82,8 @@ Directory resourceDirectory(
 /// Retrieves a test resource, as a `String` of the file contents.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
 /// - `String path` - the relative path (from the `prefix` by default).
@@ -101,8 +103,8 @@ String resourceString(String path, {String prefix = _defaultPrefix}) {
 /// Retrieves a test resource, as a the bytes of the file content.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
 /// - `String path` - the relative path (from the `prefix` by default).
@@ -119,12 +121,13 @@ Uint8List resourceBytes(String path, {String prefix = _defaultPrefix}) {
   return resourceFile(path, prefix: prefix).readAsBytesSync();
 }
 
-/// Retrieves a `String` containing the contents of a resource text file with its
-/// template values (surrounded by `{{}}`) replaced with the provided map values.
+/// Retrieves a `String` containing the contents of a resource text file with
+/// its template values (surrounded by `{{}}`) replaced with the provided map
+/// values.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
 /// - `String path` - the relative path (from the `prefix` by default).
@@ -156,8 +159,8 @@ String templateResource(
 /// creating it if necessary.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
 /// - `String path` - the relative path (from the `prefix` by default).
@@ -174,12 +177,12 @@ void copyResourceTo(String path, File file, {String prefix = _defaultPrefix}) {
   sourceFile.copySync(file.path);
 }
 
-/// Copies the test resource at the specified `path` into the provided `Directory` as
-/// a `File` with the same filename as the original.
+/// Copies the test resource at the specified `path` into the provided
+/// `Directory` as a `File` with the same filename as the original.
 ///
 /// "Test resources" are files stored (by default) under the `test/resources/`
-/// directory of the project root. This prefix may be changed, using the `prefix`
-/// argument.
+/// directory of the project root. This prefix may be changed, using the
+/// `prefix` argument.
 ///
 /// # Arguments
 /// - `String path` - the relative path (from the `prefix` by default).

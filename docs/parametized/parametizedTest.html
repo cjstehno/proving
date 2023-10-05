@@ -74,9 +74,10 @@
     
 <section class="desc markdown">
   <p>Creates a collection of test calls based on the given test parameters, where
-each element in the <code>args</code> list will be passed to a test function as a separate
-test run.</p>
-<p>The test calls generated with this function are NOT wrapped in a <code>group</code> call.</p>
+each element in the <code>args</code> list will be passed to a test function as a
+separate test run.</p>
+<p>The test calls generated with this function are NOT wrapped in a <code>group</code>
+call.</p>
 <h1 id="arguments">Arguments</h1>
 <ul>
 <li><code>List&lt;T&gt; args</code> - the list of arguments for each test run.</li>
@@ -104,6 +105,7 @@ and expect the result to be the third element.</p>
   <pre class="language-dart"><code class="language-dart">void parametizedTest&lt;T&gt;(List&lt;T&gt; args, Function testFn) {
   for (final arg in args) {
     test(&#39; - testing: $arg&#39;, () {
+      &#47;&#47; ignore: avoid_dynamic_calls
       testFn(arg);
     });
   }

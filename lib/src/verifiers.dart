@@ -25,8 +25,8 @@ void verifyEqualsAndHashCode(Object instanceA, Object instanceB) {
   expect(instanceB.hashCode, equals(instanceA.hashCode));
 }
 
-/// Verifies (using `expect`) that the result of calling `toString()` on the given
-/// object is equal to the expected value.
+/// Verifies (using `expect`) that the result of calling `toString()` on the
+/// given object is equal to the expected value.
 ///
 /// # Arguments
 /// - `Object object` - the object being tested.
@@ -35,8 +35,8 @@ void verifyToString(Object object, String string) {
   verifyToStringMatches(object, equals(string));
 }
 
-/// Verifies (using `expect`) that the result of calling `toString()` on the given
-/// object matches the provided matcher.
+/// Verifies (using `expect`) that the result of calling `toString()` on the
+/// given object matches the provided matcher.
 ///
 /// # Arguments
 /// - `Object object` - the object being tested.

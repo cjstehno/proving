@@ -1,9 +1,10 @@
 import 'package:test/test.dart';
 
-/// Creates a parametized test group, where each element in `args` will be passed
-/// to the test function as a separate test run.
+/// Creates a parametized test group, where each element in `args` will be
+/// passed to the test function as a separate test run.
 ///
-/// The test calls generated with this method are wrapped in a single `group` call.
+/// The test calls generated with this method are wrapped in a single `group`
+/// call.
 ///
 /// # Arguments
 /// - `String description` - the group label to be used.
@@ -28,6 +29,7 @@ void parametizedGroup<T>(String description, List<T> args, Function testFn) {
   group(description, () {
     for (final arg in args) {
       test(' - testing: $arg', () {
+        // ignore: avoid_dynamic_calls
         testFn(arg);
       });
     }
@@ -35,10 +37,11 @@ void parametizedGroup<T>(String description, List<T> args, Function testFn) {
 }
 
 /// Creates a collection of test calls based on the given test parameters, where
-/// each element in the `args` list will be passed to a test function as a separate
-/// test run.
+/// each element in the `args` list will be passed to a test function as a
+/// separate test run.
 ///
-/// The test calls generated with this function are NOT wrapped in a `group` call.
+/// The test calls generated with this function are NOT wrapped in a `group`
+/// call.
 ///
 /// # Arguments
 /// - `List<T> args` - the list of arguments for each test run.
@@ -62,6 +65,7 @@ void parametizedGroup<T>(String description, List<T> args, Function testFn) {
 void parametizedTest<T>(List<T> args, Function testFn) {
   for (final arg in args) {
     test(' - testing: $arg', () {
+      // ignore: avoid_dynamic_calls
       testFn(arg);
     });
   }

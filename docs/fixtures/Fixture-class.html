@@ -63,13 +63,13 @@
 
     
 <section class="desc markdown">
-  <p>Defines an abstract Fixture which will setup (<code>before</code>) and teardown (<code>after</code>)
-required "fixtures" for testing.</p>
+  <p>Defines an abstract Fixture which will setup (<code>before</code>) and teardown
+(<code>after</code>) required "fixtures" for testing.</p>
 <p>Use one of the two fixture application functions to apply the fixture to
 the test lifecyle:</p>
 <ul>
-<li><code>fixtureForEach</code> to have the fixture registered before and after each test</li>
-<li><code>fixtureForAll</code> to have it registered before and after all tests in a group.</li>
+<li><code>fixtureForEach</code> to register before and after each test</li>
+<li><code>fixtureForAll</code> to register before and after all tests in a group.</li>
 </ul>
 <p>Your implementation should override the before and/or after methods to
 perform your desired setup and teardown operations.</p>

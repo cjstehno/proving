@@ -7,7 +7,9 @@ void main() {
   group('Resources', () {
     test('using resourceFile', () {
       expect(
-          resourceFile('foo.txt').readAsStringSync(), equals('This is foo!'));
+        resourceFile('foo.txt').readAsStringSync(),
+        equals('This is foo!'),
+      );
     });
 
     test('using resourceUri', () {

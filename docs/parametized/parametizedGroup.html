@@ -74,9 +74,10 @@
     </section>
     
 <section class="desc markdown">
-  <p>Creates a parametized test group, where each element in <code>args</code> will be passed
-to the test function as a separate test run.</p>
-<p>The test calls generated with this method are wrapped in a single <code>group</code> call.</p>
+  <p>Creates a parametized test group, where each element in <code>args</code> will be
+passed to the test function as a separate test run.</p>
+<p>The test calls generated with this method are wrapped in a single <code>group</code>
+call.</p>
 <h1 id="arguments">Arguments</h1>
 <ul>
 <li><code>String description</code> - the group label to be used.</li>
@@ -105,6 +106,7 @@ and expect the result to be the third element.</p>
   group(description, () {
     for (final arg in args) {
       test(&#39; - testing: $arg&#39;, () {
+        &#47;&#47; ignore: avoid_dynamic_calls
         testFn(arg);
       });
     }

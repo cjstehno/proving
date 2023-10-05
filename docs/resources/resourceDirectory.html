@@ -75,11 +75,12 @@
 <section class="desc markdown">
   <p>Retrieves a test resource <code>Directory</code>.</p>
 <p>"Test resources" are files stored (by default) under the <code>test/resources/</code>
-directory of the project root. This prefix may be changed, using the <code>prefix</code>
-argument.</p>
+directory of the project root. This prefix may be changed, using the
+<code>prefix</code> argument.</p>
 <h1 id="arguments">Arguments</h1>
 <ul>
-<li><code>String path</code> - the relative path (from the <code>prefix</code> by default).</li>
+<li><code>String path</code> - the relative path (from the <code>prefix</code> by default). An empty
+string will provide the prefixed root directory.</li>
 <li><code>String prefix</code> - the path prefix from the project root (defaults to <code>test/resources</code>).</li>
 </ul>
 <h1 id="return">Return</h1>
@@ -93,9 +94,12 @@ argument.</p>
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Directory resourceDirectory({String path = &#39;&#39;, String prefix = _defaultPrefix}) {
+  <pre class="language-dart"><code class="language-dart">Directory resourceDirectory({
+  String path = &#39;&#39;,
+  String prefix = _defaultPrefix,
+}) {
   var dir = Directory.current;
-  while (!dir.listSync().any((entity) =&gt; entity.path.endsWith(&#39;pubspec.yaml&#39;))) {
+  while (!dir.listSync().any((entity) =&gt; entity.path.endsWith(_projectFile))) {
     dir = dir.parent;
   }
   return Directory(&#39;${dir.path}&#47;$prefix$path&#39;);

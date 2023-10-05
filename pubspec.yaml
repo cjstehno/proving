@@ -10,9 +10,9 @@ dependencies:
   test: ^1.19.2
  
 dev_dependencies:
-  mocktail: ^1.0.0
-  very_good_analysis: ^5.1.0
-  spec: ^0.2.3
-  matcher: ^0.12.16
   equatable: ^2.0.5
+  matcher: ^0.12.16
+  mocktail: ^1.0.0
+  spec: ^0.2.3
+  very_good_analysis: ^5.1.0
  

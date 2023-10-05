@@ -2,13 +2,13 @@ import 'dart:io';
 
 import 'package:test/test.dart';
 
-/// Defines an abstract Fixture which will setup (`before`) and teardown (`after`)
-/// required "fixtures" for testing.
+/// Defines an abstract Fixture which will setup (`before`) and teardown
+/// (`after`) required "fixtures" for testing.
 ///
 /// Use one of the two fixture application functions to apply the fixture to
 /// the test lifecyle:
-/// - `fixtureForEach` to have the fixture registered before and after each test
-/// - `fixtureForAll` to have it registered before and after all tests in a group.
+/// - `fixtureForEach` to register before and after each test
+/// - `fixtureForAll` to register before and after all tests in a group.
 ///
 /// Your implementation should override the before and/or after methods to
 /// perform your desired setup and teardown operations.
@@ -20,8 +20,8 @@ abstract class Fixture {
   void after() {}
 }
 
-/// Used to register a `Fixture` to be executed before and after each test method
-/// in the group.
+/// Used to register a `Fixture` to be executed before and after each test
+/// method in the group.
 ///
 /// # Arguments
 /// - `T fixture` - the fixture instance to be registered
@@ -65,7 +65,8 @@ class TempDirFixture extends Fixture {
   /// The temporary directory (will be deleted after tests).
   late Directory directory;
 
-  /// Creates the temporary directory and exposes it as the `directory` property.
+  /// Creates the temporary directory and exposes it as the `directory`
+  /// property.
   @override
   void before() {
     directory = Directory.systemTemp.createTempSync();

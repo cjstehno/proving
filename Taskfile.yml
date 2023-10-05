@@ -12,4 +12,15 @@ tasks:
     format:
         desc: Runs the code formatter on soruce and test files.
         cmd: dart format lib test
-        
+
+    lint: 
+        desc: Runs the linter on the project.
+        cmd: dart analyze
+
+    build:
+        desc: Runs everything to "build" the project - generally before publishing.
+        cmds:
+            - task: format
+            - task: lint
+            - task: test
+            - task: docs

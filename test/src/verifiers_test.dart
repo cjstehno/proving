@@ -3,7 +3,7 @@ import 'package:proving/proving.dart';
 import 'package:test/test.dart';
 
 class Person extends Equatable {
-  Person(this.name, this.age);
+  const Person(this.name, this.age);
 
   final String name;
   final int age;
@@ -30,7 +30,9 @@ void main() {
 
     test('equality', () {
       verifyEqualsAndHashCode(
+        // ignore: prefer_const_constructors
         Person('Bob', 42),
+        // ignore: prefer_const_constructors
         Person('Bob', 42),
       );
     });
