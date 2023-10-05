@@ -14,4 +14,5 @@ dev_dependencies:
   very_good_analysis: ^5.1.0
   spec: ^0.2.3
   matcher: ^0.12.16
+  equatable: ^2.0.5
  

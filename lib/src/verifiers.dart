@@ -6,7 +6,14 @@ import 'package:test/test.dart';
 /// # Arguments
 /// - `Object instanceA` - one distinct instance of the object
 /// - `Object instanceB` - another distinct instance of the object
+///
+/// # Example
+/// ```dart
+/// verifyEqualsAndHashCode('Alpha', 'Alpha');
+/// ```
 void verifyEqualsAndHashCode(Object instanceA, Object instanceB) {
+  expect(instanceA, isNot(same(instanceB)));
+
   expect(instanceA, equals(instanceA));
   expect(instanceB, equals(instanceB));
   expect(instanceA, equals(instanceB));

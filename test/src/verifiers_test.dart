@@ -1,5 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:proving/proving.dart';
 import 'package:test/test.dart';
+
+class Person extends Equatable {
+  Person(this.name, this.age);
+
+  final String name;
+  final int age;
+
+  @override
+  List<Object?> get props => [name, age];
+}
 
 void main() {
   group('Verifiers', () {
@@ -18,9 +29,21 @@ void main() {
     });
 
     test('equality', () {
-      const instA = '123abc';
-      const instB = '123abc';
-      verifyEqualsAndHashCode(instA, instB);
+      verifyEqualsAndHashCode(
+        Person('Bob', 42),
+        Person('Bob', 42),
+      );
+    });
+
+    test('same instance should fail', () {
+      const inst = 'adsfg2345';
+
+      try {
+        verifyEqualsAndHashCode(inst, inst);
+        fail('The expected excpeiton was not thrown.');
+      } on Exception {
+        // This is expected
+      }
     });
   });
 }

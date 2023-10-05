@@ -1,5 +1,5 @@
 /// A collection of unit testing tools to help "prove" that your code
-/// works.
+/// works - the whole enchilada.
 ///
 /// This library is somewhat opinionated, expecting the use of the standard
 /// `test` library and matchers.

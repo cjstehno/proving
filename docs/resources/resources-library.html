@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="proving library API docs, for the Dart programming language.">
-  <title>proving library - Dart API</title>
+  <meta name="description" content="resources library API docs, for the Dart programming language.">
+  <title>resources library - Dart API</title>
 
 
   
@@ -29,9 +29,9 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">proving</a></li>
-    <li class="self-crumb">proving library</li>
+    <li class="self-crumb">resources library</li>
   </ol>
-  <div class="self-name">proving</div>
+  <div class="self-name">resources</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -53,50 +53,19 @@
       id="dartdoc-main-content"
       class="main-content"
       data-above-sidebar=""
-      data-below-sidebar="proving&#47;proving-library-sidebar.html">
+      data-below-sidebar="resources&#47;resources-library-sidebar.html">
       
       <div>
-<h1><span class="kind-library">proving</span> library 
+<h1><span class="kind-library">resources</span> library 
  
 </h1></div>
 
     
 <section class="desc markdown">
-  <p>A collection of unit testing tools to help "prove" that your code
-works.</p>
-<p>This library is somewhat opinionated, expecting the use of the standard
-<code>test</code> library and matchers.</p>
-<p>It provides functions to verify results, parametize tests, and work
-with test resources. The goal is to provide some of the functionality
-that seems to be missing from the available libraries.</p>
+  <p>Utilities for working with test resources.</p>
 </section>
 
 
-    <section class="summary offset-anchor" id="classes">
-      <h2>Classes</h2>
-
-      <dl>
-        <dt id="Fixture">
-  <span class="name "><a href="../fixtures/Fixture-class.html">Fixture</a></span> 
-
-</dt>
-<dd>
-  An abstract base class for test fixtures that can be registered
-with the testing lifecycle using the <code>applyFixture(Fixture)</code>
-function.
-</dd>
-
-        <dt id="TempDirFixture">
-  <span class="name "><a href="../fixtures/TempDirFixture-class.html">TempDirFixture</a></span> 
-
-</dt>
-<dd>
-  A <code>Fixture</code> used to create a temporary directory, which will be created on
-setup, and deleted on teardown.
-</dd>
-
-      </dl>
-    </section>
 
 
 
@@ -106,20 +75,6 @@ setup, and deleted on teardown.
       <h2>Functions</h2>
 
       <dl class="callables">
-        <dt id="applyFixture" class="callable">
-  <span class="name"><a href="../fixtures/applyFixture.html">applyFixture</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T extends <a href="../fixtures/Fixture-class.html">Fixture</a></span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="applyFixture-param-fixture"><span class="type-annotation">T</span> <span class="parameter-name">fixture</span></span>)
-    <span class="returntype parameter">&#8594; T</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Registers the provided <code>Fixture</code> with the test lifecycle hooks for the
-current group.
-  
-
-</dd>
-
         <dt id="copyResourceInto" class="callable">
   <span class="name"><a href="../resources/copyResourceInto.html">copyResourceInto</a></span><span class="signature">(<wbr><span class="parameter" id="copyResourceInto-param-path"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, </span><span class="parameter" id="copyResourceInto-param-dir"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-io/Directory-class.html">Directory</a></span> <span class="parameter-name">dir</span>, </span><span class="parameter" id="copyResourceInto-param-prefix">{<span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">prefix</span> = <span class="default-value">_defaultPrefix</span>}</span>)
     <span class="returntype parameter">&#8594; void</span>
@@ -144,35 +99,6 @@ a <code>File</code> with the same filename as the original.
 <dd>
   Copies the test resource at the specified <code>path</code> into the provided <code>File</code>,
 creating it if necessary.
-  
-
-</dd>
-
-        <dt id="parametizedGroup" class="callable">
-  <span class="name"><a href="../parametized/parametizedGroup.html">parametizedGroup</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="parametizedGroup-param-description"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">description</span>, </span><span class="parameter" id="parametizedGroup-param-args"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">args</span>, </span><span class="parameter" id="parametizedGroup-param-testFn"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Function-class.html">Function</a></span> <span class="parameter-name">testFn</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Creates a parametized test group, where each element in <code>args</code> will be passed
-to the test function as a separate test run.
-  
-
-</dd>
-
-        <dt id="parametizedTest" class="callable">
-  <span class="name"><a href="../parametized/parametizedTest.html">parametizedTest</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="parametizedTest-param-args"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">args</span>, </span><span class="parameter" id="parametizedTest-param-testFn"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Function-class.html">Function</a></span> <span class="parameter-name">testFn</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Creates a collection of test calls based on the given test parameters, where
-each element in the <code>args</code> list will be passed to a test function as a separate
-test run.
   
 
 </dd>
@@ -256,48 +182,6 @@ template values (surrounded by <code>{{}}</code>) replaced with the provided map
 
 </dd>
 
-        <dt id="verifyEqualsAndHashCode" class="callable">
-  <span class="name"><a href="../verifiers/verifyEqualsAndHashCode.html">verifyEqualsAndHashCode</a></span><span class="signature">(<wbr><span class="parameter" id="verifyEqualsAndHashCode-param-instanceA"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">instanceA</span>, </span><span class="parameter" id="verifyEqualsAndHashCode-param-instanceB"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">instanceB</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Verifies (using <code>expect</code>) that the two provided instances, which should be
-eqivalent (but not the same instance) are actually equal.
-  
-
-</dd>
-
-        <dt id="verifyToString" class="callable">
-  <span class="name"><a href="../verifiers/verifyToString.html">verifyToString</a></span><span class="signature">(<wbr><span class="parameter" id="verifyToString-param-object"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">object</span>, </span><span class="parameter" id="verifyToString-param-string"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/String-class.html">String</a></span> <span class="parameter-name">string</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Verifies (using <code>expect</code>) that the result of calling <code>toString()</code> on the given
-object is equal to the expected value.
-  
-
-</dd>
-
-        <dt id="verifyToStringMatches" class="callable">
-  <span class="name"><a href="../verifiers/verifyToStringMatches.html">verifyToStringMatches</a></span><span class="signature">(<wbr><span class="parameter" id="verifyToStringMatches-param-object"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.1.2/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">object</span>, </span><span class="parameter" id="verifyToStringMatches-param-matcher"><span class="type-annotation"><a href="https://pub.dev/documentation/matcher/0.12.16/expect/Matcher-class.html">Matcher</a></span> <span class="parameter-name">matcher</span></span>)
-    <span class="returntype parameter">&#8594; void</span>
-  </span>
-  
-
-</dt>
-<dd>
-  Verifies (using <code>expect</code>) that the result of calling <code>toString()</code> on the given
-object matches the provided matcher.
-  
-
-</dd>
-
       </dl>
     </section>
 
@@ -316,7 +200,7 @@ object matches the provided matcher.
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
     <li><a href="../index.html">proving</a></li>
-    <li class="self-crumb">proving library</li>
+    <li class="self-crumb">resources library</li>
 </ol>
 
 
@@ -333,7 +217,7 @@ object matches the provided matcher.
   </div>
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
-    <h5>proving library</h5>
+    <h5>resources library</h5>
   </div><!--/sidebar-offcanvas-right-->
 
 </main>
